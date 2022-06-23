@@ -1,0 +1,6 @@
+module Pods_pixaBayApp_pixaBayAppTests {
+  umbrella header "Pods-pixaBayApp-pixaBayAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

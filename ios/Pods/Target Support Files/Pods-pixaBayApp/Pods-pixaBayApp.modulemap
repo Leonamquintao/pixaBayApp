@@ -1,0 +1,6 @@
+module Pods_pixaBayApp {
+  umbrella header "Pods-pixaBayApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
