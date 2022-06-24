@@ -2,22 +2,19 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
 interface SearchStateProps {
-  initialState: null | [];
+  initialState: boolean;
 }
 
 const SearchState: React.FC<SearchStateProps> = ({initialState}) => {
   const happy = require('../assets/happy.png');
   const sad = require('../assets/sad.png');
-
   const initialText =
     'Start typing into the search bar to see wonderful images';
   const emptyResponseText = 'No Results Found';
 
-  const selectedImage = initialState == null ? happy : sad;
-  const selectedText = initialState == null ? initialText : emptyResponseText;
-
   const {container, imgContainer, imageStyle, txtContainer, textStyle} = styles;
-
+  const selectedImage = initialState ? happy : sad;
+  const selectedText = initialState ? initialText : emptyResponseText;
   return (
     <View style={container}>
       <View style={imgContainer}>

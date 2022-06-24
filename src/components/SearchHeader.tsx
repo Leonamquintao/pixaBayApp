@@ -13,6 +13,8 @@ interface SearchHeaderProps {
   clearInput: () => void;
   onKeyPress: () => void;
   onChangeText: (text: string) => void;
+  totalHits: number | null;
+  isLoading: boolean;
 }
 
 const SearchHeader: React.FC<SearchHeaderProps> = ({
@@ -20,6 +22,7 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({
   clearInput,
   onKeyPress,
   onChangeText,
+  isLoading,
 }) => {
   const {
     header,
@@ -49,7 +52,7 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({
           )}
         </View>
         <View style={searchIconContainer}>
-          {searchTerm.length > 3 ? (
+          {isLoading ? (
             <ActivityIndicator color={'#b64190'} />
           ) : (
             <Icon name="search" size={24} color={'#b64190'} />
@@ -62,7 +65,7 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({
 
 const styles = StyleSheet.create({
   header: {
-    flex: 0.2,
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 16,
     paddingTop: 10,
