@@ -81,6 +81,19 @@ project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
 
+// project.ext.vectoricons = [
+//     iconFontNames: [ 
+//         'Ionicons.ttf',
+//         'EvilIcons.ttf',
+//         'FontAwesome.ttf',
+//         'MaterialIcons.ttf',
+//         'FontAwesome5_Solid.ttf',
+//         'FontAwesome5_Regular.ttf',
+//         'FontAwesome5_Brands.ttf',
+//         'MaterialCommunityIcons.ttf',
+//     ]
+// ]
+
 apply from: "../../node_modules/react-native/react.gradle"
 
 /**
@@ -252,6 +265,10 @@ android {
             }
 
         }
+    }
+
+    defaultConfig {
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
 }
 

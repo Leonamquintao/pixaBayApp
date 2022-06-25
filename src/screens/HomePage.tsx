@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import SearchState from '../components/SearchState';
 import SearchHeader from '../components/SearchHeader';
 import {Hits} from '../types';
@@ -50,30 +56,34 @@ const HomePage: React.FC = () => {
 
   return (
     <View style={container}>
-      <View style={headerContainer}>
-        <SearchHeader
-          searchTerm={searchTerm}
-          clearInput={clearInput}
-          onKeyPress={triggerSearch}
-          onChangeText={setSearchTerm}
-          totalHits={totalHits}
-          isLoading={isLoading}
-        />
-      </View>
-      <View style={content}>
-        {searchHits && searchHits?.length > 0 ? (
-          <FlatList
-            contentContainerStyle={{}}
-            data={searchHits}
-            keyExtractor={item => String(item.id)}
-            renderItem={({item}) => <ListItem item={item} />}
-            onEndReachedThreshold={0.05}
-            onEndReached={triggerSearch}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
+        <View style={headerContainer}>
+          <SearchHeader
+            searchTerm={searchTerm}
+            clearInput={clearInput}
+            onKeyPress={triggerSearch}
+            onChangeText={setSearchTerm}
+            totalHits={totalHits}
+            isLoading={isLoading}
           />
-        ) : (
-          <SearchState initialState={pristine} />
-        )}
-      </View>
+        </View>
+        <View style={content}>
+          {searchHits && searchHits?.length > 0 ? (
+            <FlatList
+              contentContainerStyle={{}}
+              data={searchHits}
+              keyExtractor={item => String(item.id)}
+              renderItem={({item}) => <ListItem item={item} />}
+              onEndReachedThreshold={0.05}
+              onEndReached={triggerSearch}
+            />
+          ) : (
+            <SearchState initialState={pristine} />
+          )}
+        </View>
+      </KeyboardAvoidingView>
     </View>
   );
 };
@@ -82,6 +92,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
+    paddingTop: Platform.OS === 'ios' ? 2 : 14,
   },
   headerContainer: {
     flex: 0.2,
