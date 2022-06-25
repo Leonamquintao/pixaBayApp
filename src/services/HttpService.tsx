@@ -8,6 +8,6 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const fetchApiData = async (page: number, query: string) => {
   const qr = query.replace(' ', '+');
-  const route = `${BASE_URL}&q=${qr}&image_type=photo&per_page=5&page=${page}`;
+  const route = `${BASE_URL}&q=${qr}&image_type=photo&per_page=10&page=${page}`;
   return await axios.get(route);
 };

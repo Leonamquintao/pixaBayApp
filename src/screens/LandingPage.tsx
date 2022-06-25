@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   imageStyle: {
-    width: 400,
-    height: 300,
+    width: 300,
+    height: 200,
   },
   textStyle: {
     color: '#000',

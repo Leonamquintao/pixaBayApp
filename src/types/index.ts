@@ -1,3 +1,9 @@
+export type RootStackParamList = {
+  HomePage: undefined;
+  LandingPage: undefined;
+  DetailsPage: undefined;
+};
+
 export type Hits = {
   id: number;
   pageURL: string;
