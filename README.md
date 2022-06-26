@@ -1,8 +1,6 @@
-![alt text|100x100](src/assets/triangle.png 'Logo')
-
 # PixaBay App
 
-## _ This project is destined for code testing for [Aktiv Learning](https://aktiv.com/) _
+## _This project is destined for code challenge for [Aktiv Learning](https://aktiv.com/)_
 
 ## Project Setup.
 
