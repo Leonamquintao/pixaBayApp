@@ -1,4 +1,4 @@
-[<img src="triangle.png" width="250"/>](src/assets/triangle.png)
+[<img src="(src/assets/triangle.png" width="100"/>](src/assets/triangle.png)
 
 # PixaBay App
 
