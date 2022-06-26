@@ -1,4 +1,4 @@
-[[src/assets/triangle.png|width=100px]]
+![alt text|100x100](src/assets/triangle.png 'Logo')
 
 # PixaBay App
 
