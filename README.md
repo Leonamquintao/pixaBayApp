@@ -1,4 +1,6 @@
-# PixaBay App ![alt text](src/assets/triangle.png 'Logo')
+![alt text](src/assets/triangle.png 'Logo'){ width=50% }
+
+# PixaBay App
 
 ## _ This project is destined for code testing for [Aktiv Learning](https://aktiv.com/) _
 
