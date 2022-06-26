@@ -1,4 +1,4 @@
-![alt text](src/assets/triangle.png 'Logo'){ width=50% }
+[<img src="triangle.png" width="250"/>](src/assets/triangle.png)
 
 # PixaBay App
 
