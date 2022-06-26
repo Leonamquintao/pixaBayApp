@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 16,
-    paddingTop: 10,
+    padding: 16,
+    marginTop: -10,
     borderBottomWidth: 0.5,
     borderBottomColor: '#6e5d96',
   },

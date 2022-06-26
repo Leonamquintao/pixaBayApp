@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flex: 0.2,
-    marginVertical: 4,
+    paddingVertical: 2,
   },
   content: {
     flex: 1,

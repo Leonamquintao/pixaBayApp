@@ -9,7 +9,7 @@ interface FabButtonProps {
 const FabButton: React.FC<FabButtonProps> = ({onPress}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Icon name="chevron-left" size={30} />
+      <Icon name="chevron-left" size={30} style={styles.icon} />
     </TouchableOpacity>
   );
 };
@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     alignItems: 'center',
     borderRadius: 50,
+  },
+  icon: {
+    marginRight: 5,
+    alignSelf: 'center',
   },
 });
 

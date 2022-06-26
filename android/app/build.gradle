@@ -81,19 +81,6 @@ project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
 
-// project.ext.vectoricons = [
-//     iconFontNames: [ 
-//         'Ionicons.ttf',
-//         'EvilIcons.ttf',
-//         'FontAwesome.ttf',
-//         'MaterialIcons.ttf',
-//         'FontAwesome5_Solid.ttf',
-//         'FontAwesome5_Regular.ttf',
-//         'FontAwesome5_Brands.ttf',
-//         'MaterialCommunityIcons.ttf',
-//     ]
-// ]
-
 apply from: "../../node_modules/react-native/react.gradle"
 
 /**
@@ -277,8 +264,10 @@ dependencies {
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-vector-icons')
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
@@ -327,7 +316,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 def isNewArchitectureEnabled() {
     // To opt-in for the New Architecture, you can either:
@@ -336,3 +324,5 @@ def isNewArchitectureEnabled() {
     // - Set an environment variable `ORG_GRADLE_PROJECT_newArchEnabled=true`
     return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
 }
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
