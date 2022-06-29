@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -11,18 +11,35 @@ import SearchHeader from '../components/SearchHeader';
 import {Hits} from '../types';
 import ListItem from '../components/ListItem';
 import {fetchApiData} from '../services/HttpService';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {
+  addHits,
+  addSearch,
+  clearSearch,
+  deleteHits,
+  storedLastSearch,
+  totalHitsStored,
+} from '../store/hitsSlice';
 
 const HomePage: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const searchSelector = useAppSelector(storedLastSearch);
+  const hitsSelector = useAppSelector(totalHitsStored);
+
   const [page, setPage] = useState<number>(1);
   const [pristine, setPristine] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [searchTerm, setSearchTerm] = useState<string>('');
-
   const [totalHits, setTotalHits] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchHits, setSearchHits] = useState<Hits[]>([]);
 
   const {container, headerContainer, content} = styles;
+
+  useEffect(() => {
+    setSearchTerm(searchSelector);
+    setSearchHits(hitsSelector);
+  }, [hitsSelector, searchSelector]);
 
   const triggerSearch = async () => {
     try {
@@ -33,6 +50,10 @@ const HomePage: React.FC = () => {
         setTotalHits(response.data.total);
 
         setSearchHits([...searchHits, ...response.data.hits]);
+
+        dispatch(addHits(response.data.hits));
+        dispatch(addSearch(searchTerm));
+
         setIsLoading(false);
         setPage(page + 1);
       }
@@ -46,6 +67,8 @@ const HomePage: React.FC = () => {
     setTotalHits(null);
     setSearchHits([]);
     setPristine(true);
+    dispatch(deleteHits());
+    dispatch(clearSearch());
     setPage(1);
   };
 
