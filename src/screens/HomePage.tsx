@@ -44,16 +44,15 @@ const HomePage: React.FC = () => {
   const triggerSearch = async () => {
     try {
       if (searchTerm.length >= 2) {
-        setPristine(false);
         setIsLoading(true);
         const response = await fetchApiData(page, searchTerm);
         setTotalHits(response.data.total);
-
         setSearchHits([...searchHits, ...response.data.hits]);
-
-        dispatch(addHits(response.data.hits));
-        dispatch(addSearch(searchTerm));
-
+        if (pristine) {
+          dispatch(addHits(response.data.hits));
+          dispatch(addSearch(searchTerm));
+        }
+        setPristine(false);
         setIsLoading(false);
         setPage(page + 1);
       }
@@ -97,7 +96,7 @@ const HomePage: React.FC = () => {
             <FlatList
               contentContainerStyle={{}}
               data={searchHits}
-              keyExtractor={item => String(item.id)}
+              keyExtractor={(item, index) => String(item.id + index)}
               renderItem={({item}) => <ListItem item={item} />}
               onEndReachedThreshold={0.05}
               onEndReached={triggerSearch}
